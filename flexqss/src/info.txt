@@ -1,0 +1,52 @@
+size: minimum width, minimum height, maximum width, maximum height
+border types: none, solid, dotted, dashed, double, groove, ridge, inset, outset
+padding: all, left, right, top, bottom
+margin: all, left, right, top, bottom
+
+Color button names widget-type_state_color
+pb_n_fgc_pb button name
+pb_n_fgc_lb label name for color
+pb_n_ctl_lb label name for contrast
+pb_n_bdt_cb combobox for border type
+pb_n_bdw_sb spinbox for border width
+pb_n_bdr_sb spinbox for border radius
+pb_n_minw_sb spinbox for minimum width
+pb_n_pd_sb spinbox for padding
+pb_n_m_sp spinbox for margin
+
+forground color: fgc
+background color: bgc
+border color: bdc
+border type: bdt
+
+states: normal n, checked c, pressed p, hover h, disabled d
+width: minimum width minw, maximum width maxw
+height: minimum height minh, maximum height maxh
+
+padding: 5px 10px 15px 20px; - Sets padding in the order: top, right, bottom, left. 
+
+QPushButton pb
+QCheckBox cb
+QRadioButton rb
+QToolButton tb
+QLabel lb
+QLineEdit le
+QTextEdit te
+QPlainTextEdit pte
+QComboBox cmb
+QSpinBox sb
+QDoubleSpinBox dsb
+QSlider sl
+QScrollBar sb
+QGroupBox gb
+QToolBox tb
+QTabWidget tw
+QStackedWidget sw
+QFrame qf
+QWidget qw
+
+color label cl
+contrast label ctl
+
+
+

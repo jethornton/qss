@@ -1,0 +1,206 @@
+#!/usr/bin/env python3
+
+import sys, os
+
+# disable cache usage must be before any local imports
+sys.dont_write_bytecode = True
+
+from PyQt6 import uic
+from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtWidgets import QFileDialog, QColorDialog, QFontDialog
+from PyQt6.QtGui import QColor, QPixmap, QFontInfo
+
+from libflexgui import qss_contrast
+from libflexgui import qss_pushbutton
+from libflexgui import qss_toolbutton
+from libflexgui import qss_radiobutton
+
+from libflexgui import qss_images
+
+class show_qss(QMainWindow):
+	def __init__(self, gui_path=None):
+		super().__init__()
+		if gui_path is None:
+			# get the path to the executable
+			self.path = os.path.dirname(os.path.realpath(sys.argv[0]))
+
+			# set the library path
+			if self.path == '/usr/bin':
+				self.gui_path = '/usr/lib/libflexgui'
+			else:
+				self.gui_path = self.path
+			uic.loadUi(os.path.join(self.gui_path, 'keyboard_qss.ui'), self)
+			list_widget_items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6']
+			self.enabledLW.addItem('QListWidget Enabled with scroll bars')
+			self.enabledLW.addItems(list_widget_items)
+			self.disabledLW.addItem('QListWidget Disabled')
+			self.disabledLW.addItems(list_widget_items)
+			self.actionExit.triggered.connect(self.close)
+		else:
+			uic.loadUi(gui_path, self)
+
+class main(QMainWindow):
+	def __init__(self):
+		super().__init__()
+
+		self.user_gui = show_qss() # set default user gui
+
+		# get the path to the executable
+		self.path = os.path.dirname(os.path.realpath(sys.argv[0]))
+
+		# set the library path
+		if self.path == '/usr/bin':
+			self.gui_path = '/usr/lib/libflexgui'
+		else:
+			self.gui_path = self.path
+		uic.loadUi(os.path.join(self.gui_path, 'flexqss.ui'), self)
+
+		# menu and button connections
+		self.actionOpen.triggered.connect(self.select_gui)
+		self.select_gui_pb.clicked.connect(self.select_gui)
+		self.show_gui_pb.clicked.connect(self.show_gui)
+		self.exit_pb.clicked.connect(QApplication.instance().quit)
+
+		# variables
+		self.gui_path = False
+
+		# add box model image to all pages
+		for i in range(1):
+			getattr(self, f'boxmodel_lb_{i}').setPixmap(QPixmap(':/boxmodel.png'))
+
+		qss_pushbutton.startup(self)
+		qss_toolbutton.startup(self)
+		qss_radiobutton.startup(self)
+
+		self.show()
+
+	def font_dialog(self):
+		obj = self.sender().objectName().split('_')[0]
+		options = QFontDialog.FontDialogOption.DontUseNativeDialog
+
+		if getattr(self, f'{obj}_scaleable_fonts').isChecked():
+			options |= QFontDialog.FontDialogOption.ScalableFonts
+		elif getattr(self, f'{obj}_non_scaleable_fonts').isChecked():
+			options |= QFontDialog.FontDialogOption.NonScalableFonts
+		elif getattr(self, f'{obj}_monospaced_fonts').isChecked():
+			options |= QFontDialog.FontDialogOption.MonospacedFonts
+		elif getattr(self, f'{obj}_proportional_fonts').isChecked():
+			options |= QFontDialog.FontDialogOption.ProportionalFonts
+
+		if getattr(self, f'{obj}_font_family'):
+			current_font = QFont(getattr(self, f'{obj}_font_family'),
+				getattr(self, f'{obj}_font_size'),
+				getattr(self, f'{obj}_font_weight'),
+				getattr(self, f'{obj}_font_italic'))
+		else:
+			current_font = self.font()
+
+		font, ok = QFontDialog.getFont(current_font, self, "Choose a Font", options)
+		if ok:
+			fontinfo = QFontInfo(font)
+			setattr(self, f'{obj}_font_family', fontinfo.family())
+			setattr(self, f'{obj}_font_size', font.pointSize())
+			setattr(self, f'{obj}_font_style', fontinfo.styleName())
+			setattr(self, f'{obj}_font_weight', fontinfo.weight())
+			setattr(self, f'{obj}_font_italic', fontinfo.italic())
+			setattr(self, f'{obj}_n_style', True)
+		else:
+			setattr(self, f'{obj}_font_family', False)
+			setattr(self, f'{obj}_font_size', False)
+			setattr(self, f'{obj}_font_weight', False)
+			setattr(self, f'{obj}_font_weight', False)
+			setattr(self, f'{obj}_font_italic', False)
+
+	def color_dialog(self):
+		name = self.sender().objectName().split('_')
+		color_var = f'{"_".join(name[:3])}_var'
+		#print(f'color_var {color_var}')
+		color_label = f'{"_".join(name[:3])}_lb'
+		#print(f'color_label {color_label}')
+		contrast_label = f'{"_".join(name[:2])}_ctl_lb'
+		#print(f'contrast_label {contrast_label}')
+		style_var = f'{"_".join(name[:2])}_style'
+		#print(f'style_var {style_var}')
+		#contrast_var = {'fgc': 'bgc', 'bcg': 'fgc'}
+		if name[2] == 'fgc':
+			contrast_var = getattr(self, f'{"_".join(name[:2])}_bgc_var')
+		elif name[2] == 'bgc':
+			contrast_var = getattr(self, f'{"_".join(name[:2])}_fgc_var')
+		else:
+			contrast_var = False
+		print(f'contrast_var {contrast_var}')
+
+		if getattr(self, color_var):
+			initial_color = QColor(getattr(self, color_var))
+		else:
+			initial_color = QColor(0, 0, 0)  # Initial color: Black
+
+		color_dialog = QColorDialog(self)
+		color_dialog.setOptions(QColorDialog.ColorDialogOption.DontUseNativeDialog | 
+			QColorDialog.ColorDialogOption.ShowAlphaChannel)
+		color_dialog.setCurrentColor(initial_color)
+		if color_dialog.exec():
+			color = color_dialog.currentColor()
+			if color.isValid():
+				#print('valid')
+				setattr(self, color_var, color.name())
+				#print(getattr(self, color_var))
+				getattr(self, color_label).setStyleSheet(f'background-color: {color.name()};')
+				setattr(self, style_var, True)
+
+				if contrast_var:
+					contrast_ratio = qss_contrast.calculate_contrast_ratio(color, QColor(contrast_var))
+					getattr(self, contrast_label).setText(f'Contrast Ratio {contrast_ratio}:1')
+		else:
+			setattr(self, color_var, False)
+			getattr(self, color_label).setStyleSheet(f'background-color: none;')
+
+	def select_gui(self):
+		options = QFileDialog.Option.DontUseNativeDialog
+		file_path = False
+		file_dialog = QFileDialog()
+		file_dialog.setFileMode(QFileDialog.FileMode.ExistingFile)
+		file_dialog.setOptions(QFileDialog.Option.DontUseNativeDialog)
+		file_dialog.setWindowTitle('Open File')
+		file_path, file_type = file_dialog.getOpenFileName(None,
+		caption='Select GUI file', directory=os.path.expanduser("~"),
+		filter='*.ui', options=options)
+		if file_path:
+			self.user_gui = show_qss(file_path)
+		else:
+			self.user_gui = show_qss()
+
+	def show_gui(self):
+		self.build_stylesheet()
+		self.user_gui.setStyleSheet(self.stylesheet)
+		self.user_gui.show()
+
+	def build_stylesheet(self):
+		self.stylesheet = ''
+
+		if self.pb_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QPushButton Section */\n\n'
+			self.stylesheet += self.pb_stylesheet.toPlainText()
+
+		if self.tb_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QToolButton Section */\n\n'
+			self.stylesheet += self.tb_stylesheet.toPlainText()
+
+		if self.rb_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QRadioButton Section */\n\n'
+			self.stylesheet += self.rb_stylesheet.toPlainText()
+
+		if self.cb_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QCheckBox Section */\n\n'
+			self.stylesheet += self.cb_stylesheet.toPlainText()
+
+
+app = QApplication(sys.argv)
+gui = main()
+sys.exit(app.exec())
+
+
+
+
+
+
