@@ -90,8 +90,10 @@ def create_stylesheet(parent):
 		# border
 		if parent.pb_n_bdt_cb.currentText() != 'Select':
 			style += f'\tborder-style: {parent.pb_n_bdt_cb.currentText()};\n'
-			style += f'\tborder-width: {parent.pb_n_bdw_sb.value()}px;\n'
-			style += f'\tborder-radius: {parent.pb_n_bdr_sb.value()}px;\n'
+			if parent.pb_n_bdw_sb.value() > 0:
+				style += f'\tborder-width: {parent.pb_n_bdw_sb.value()}px;\n'
+			if parent.pb_n_bdr_sb.value() > 0:
+				style += f'\tborder-radius: {parent.pb_n_bdr_sb.value()}px;\n'
 		if parent.pb_n_bdc_var:
 			style += f'\tborder-color: {parent.pb_n_bdc_var};\n'
 
@@ -126,8 +128,10 @@ def create_stylesheet(parent):
 		# border
 		if parent.pb_h_bdt_cb.currentText() != 'Select':
 			style += f'\tborder-style: {parent.pb_h_bdt_cb.currentText()};\n'
-			style += f'\tborder-width: {parent.pb_h_bdw_sb.value()}px;\n'
-			style += f'\tborder-radius: {parent.pb_h_bdr_sb.value()}px;\n'
+			if parent.pb_h_bdw_sb.value() > 0:
+				style += f'\tborder-width: {parent.pb_h_bdw_sb.value()}px;\n'
+			if parent.pb_h_bdr_sb.value() > 0:
+				style += f'\tborder-radius: {parent.pb_h_bdr_sb.value()}px;\n'
 		if parent.pb_h_bdc_var:
 			style += f'\tborder-color: {parent.pb_h_bdc_var};\n'
 
@@ -149,8 +153,10 @@ def create_stylesheet(parent):
 		# border
 		if parent.pb_p_bdt_cb.currentText() != 'Select':
 			style += f'\tborder-style: {parent.pb_p_bdt_cb.currentText()};\n'
-			style += f'\tborder-width: {parent.pb_p_bdw_sb.value()}px;\n'
-			style += f'\tborder-radius: {parent.pb_p_bdr_sb.value()}px;\n'
+			if parent.pb_p_bdw_sb.value() > 0:
+				style += f'\tborder-width: {parent.pb_p_bdw_sb.value()}px;\n'
+			if parent.pb_p_bdr_sb.value() > 0:
+				style += f'\tborder-radius: {parent.pb_p_bdr_sb.value()}px;\n'
 		if parent.pb_p_bdc_var:
 			style += f'\tborder-color: {parent.pb_p_bdc_var};\n'
 
@@ -172,8 +178,10 @@ def create_stylesheet(parent):
 		# border
 		if parent.pb_c_bdt_cb.currentText() != 'Select':
 			style += f'\tborder-style: {parent.pb_c_bdt_cb.currentText()};\n'
-			style += f'\tborder-width: {parent.pb_c_bdw_sb.value()}px;\n'
-			style += f'\tborder-radius: {parent.pb_c_bdr_sb.value()}px;\n'
+			if parent.pb_c_bdw_sb.value() > 0:
+				style += f'\tborder-width: {parent.pb_c_bdw_sb.value()}px;\n'
+			if parent.pb_c_bdr_sb.value() > 0:
+				style += f'\tborder-radius: {parent.pb_c_bdr_sb.value()}px;\n'
 		if parent.pb_c_bdc_var:
 			style += f'\tborder-color: {parent.pb_c_bdc_var};\n'
 
@@ -195,8 +203,10 @@ def create_stylesheet(parent):
 		# border
 		if parent.pb_d_bdt_cb.currentText() != 'Select':
 			style += f'\tborder-style: {parent.pb_d_bdt_cb.currentText()};\n'
-			style += f'\tborder-width: {parent.pb_d_bdw_sb.value()}px;\n'
-			style += f'\tborder-radius: {parent.pb_d_bdr_sb.value()}px;\n'
+			if parent.pb_d_bdw_sb.value() > 0:
+				style += f'\tborder-width: {parent.pb_d_bdw_sb.value()}px;\n'
+			if parent.pb_d_bdr_sb.value() > 0:
+				style += f'\tborder-radius: {parent.pb_d_bdr_sb.value()}px;\n'
 		if parent.pb_d_bdc_var:
 			style += f'\tborder-color: {parent.pb_d_bdc_var};\n'
 
@@ -224,7 +234,7 @@ def size_changed(parent): # size, padding and margin are only for normal state
 		parent.pb_n_style = True
 
 def clear_stylesheet(parent):
-
+	parent.pb_stylesheet.clear()
 	parent.pb_n_style = False
 
 	for state in STATES: # color dialog connections

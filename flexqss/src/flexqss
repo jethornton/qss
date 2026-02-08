@@ -14,6 +14,7 @@ from libflexgui import qss_contrast
 from libflexgui import qss_pushbutton
 from libflexgui import qss_toolbutton
 from libflexgui import qss_radiobutton
+from libflexgui import qss_groupbox
 
 from libflexgui import qss_images
 
@@ -71,6 +72,7 @@ class main(QMainWindow):
 		qss_pushbutton.startup(self)
 		qss_toolbutton.startup(self)
 		qss_radiobutton.startup(self)
+		qss_groupbox.startup(self)
 
 		self.show()
 
@@ -128,7 +130,7 @@ class main(QMainWindow):
 			contrast_var = getattr(self, f'{"_".join(name[:2])}_fgc_var')
 		else:
 			contrast_var = False
-		print(f'contrast_var {contrast_var}')
+		#print(f'contrast_var {contrast_var}')
 
 		if getattr(self, color_var):
 			initial_color = QColor(getattr(self, color_var))
@@ -193,6 +195,10 @@ class main(QMainWindow):
 		if self.cb_stylesheet.toPlainText() != '':
 			self.stylesheet += '\n/* QCheckBox Section */\n\n'
 			self.stylesheet += self.cb_stylesheet.toPlainText()
+
+		if self.gb_stylesheet.toPlainText() != '':
+			self.stylesheet += '\n/* QGroupBox Section */\n\n'
+			self.stylesheet += self.gb_stylesheet.toPlainText()
 
 
 app = QApplication(sys.argv)
