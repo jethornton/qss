@@ -187,6 +187,18 @@ Border and Margin location.</string>
                 </item>
                 <item row="1" column="0">
                  <widget class="QTabWidget" name="tabWidget">
+                  <property name="minimumSize">
+                   <size>
+                    <width>250</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>250</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="currentIndex">
                    <number>0</number>
                   </property>
@@ -465,6 +477,18 @@ Border and Margin location.</string>
                 </item>
                 <item row="1" column="2" rowspan="2">
                  <widget class="QGroupBox" name="groupBox_2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>225</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>225</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="title">
                    <string>Font</string>
                   </property>
@@ -1129,6 +1153,23 @@ Border and Margin location.</string>
             <string>Tool Button</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_41">
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_60">
+              <property name="text">
+               <string>The QToolButton uses the Box Model for styling</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QPushButton" name="tb_apply_style">
+              <property name="text">
+               <string>Apply Style</string>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="0" rowspan="2">
              <widget class="QTabWidget" name="tabWidget_9">
               <property name="sizePolicy">
@@ -1145,7 +1186,60 @@ Border and Margin location.</string>
                 <string>Normal</string>
                </attribute>
                <layout class="QGridLayout" name="gridLayout_23">
-                <item row="0" column="2">
+                <item row="0" column="0">
+                 <widget class="QGroupBox" name="groupBox_14">
+                  <property name="title">
+                   <string>Color</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_28">
+                   <item row="0" column="0">
+                    <widget class="QPushButton" name="tb_n_fgc_pb">
+                     <property name="text">
+                      <string>Foreground</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLabel" name="tb_n_fgc_lb">
+                     <property name="frameShape">
+                      <enum>QFrame::Box</enum>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QPushButton" name="tb_n_bgc_pb">
+                     <property name="text">
+                      <string>Background</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLabel" name="tb_n_bgc_lb">
+                     <property name="frameShape">
+                      <enum>QFrame::Box</enum>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0" colspan="2">
+                    <widget class="QLabel" name="tb_n_ctl_lb">
+                     <property name="text">
+                      <string>Contrast Ratio N/A</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="0" column="1">
                  <widget class="QGroupBox" name="groupBox_4">
                   <property name="title">
                    <string>Border</string>
@@ -1206,6 +1300,18 @@ Border and Margin location.</string>
                 </item>
                 <item row="1" column="0">
                  <widget class="QTabWidget" name="tabWidget_10">
+                  <property name="minimumSize">
+                   <size>
+                    <width>250</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>250</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="currentIndex">
                    <number>0</number>
                   </property>
@@ -1482,8 +1588,20 @@ Border and Margin location.</string>
                   </widget>
                  </widget>
                 </item>
-                <item row="1" column="2" rowspan="2">
+                <item row="1" column="1">
                  <widget class="QGroupBox" name="groupBox_13">
+                  <property name="minimumSize">
+                   <size>
+                    <width>225</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>225</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="title">
                    <string>Font</string>
                   </property>
@@ -1533,59 +1651,6 @@ Border and Margin location.</string>
                     <widget class="QRadioButton" name="tb_proportional_fonts">
                      <property name="text">
                       <string>Proportional Fonts</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="QGroupBox" name="groupBox_14">
-                  <property name="title">
-                   <string>Color</string>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_28">
-                   <item row="0" column="0">
-                    <widget class="QPushButton" name="tb_n_fgc_pb">
-                     <property name="text">
-                      <string>Foreground</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QLabel" name="tb_n_fgc_lb">
-                     <property name="frameShape">
-                      <enum>QFrame::Box</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="0">
-                    <widget class="QPushButton" name="tb_n_bgc_pb">
-                     <property name="text">
-                      <string>Background</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QLabel" name="tb_n_bgc_lb">
-                     <property name="frameShape">
-                      <enum>QFrame::Box</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="0" colspan="2">
-                    <widget class="QLabel" name="tb_n_ctl_lb">
-                     <property name="text">
-                      <string>Contrast Ratio N/A</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignCenter</set>
                      </property>
                     </widget>
                    </item>
@@ -2124,14 +2189,42 @@ Border and Margin location.</string>
               </widget>
              </widget>
             </item>
-            <item row="1" column="1" colspan="3">
-             <widget class="QTabWidget" name="tabWidget_11">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
+            <item row="2" column="4">
+             <widget class="QPushButton" name="tb_clear_style">
+              <property name="text">
+               <string>Clear Style</string>
               </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QToolButton" name="tb_n">
+              <property name="text">
+               <string>Normal</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="4">
+             <widget class="QToolButton" name="tb_d">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Disabled</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QToolButton" name="tb_c">
+              <property name="text">
+               <string>Checkable</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" colspan="4">
+             <widget class="QTabWidget" name="tabWidget_11">
               <property name="currentIndex">
                <number>0</number>
               </property>
@@ -2160,57 +2253,6 @@ Border and Margin location.</string>
                 </item>
                </layout>
               </widget>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_60">
-              <property name="text">
-               <string>The QToolButton uses the Box Model for styling</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QPushButton" name="tb_apply_style">
-              <property name="text">
-               <string>Apply Style</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QPushButton" name="tb_clear_style">
-              <property name="text">
-               <string>Clear Style</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QToolButton" name="tb_n">
-              <property name="text">
-               <string>Normal</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QToolButton" name="tb_c">
-              <property name="text">
-               <string>Checkable</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="3">
-             <widget class="QToolButton" name="tb_d">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string>Disabled</string>
-              </property>
              </widget>
             </item>
            </layout>
@@ -2314,8 +2356,20 @@ Border and Margin location.</string>
                 </item>
                 <item row="1" column="0">
                  <widget class="QTabWidget" name="tabWidget_14">
+                  <property name="minimumSize">
+                   <size>
+                    <width>250</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>250</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="currentIndex">
-                   <number>0</number>
+                   <number>2</number>
                   </property>
                   <widget class="QWidget" name="tabWidgetPage1_3">
                    <attribute name="title">
@@ -2592,6 +2646,18 @@ Border and Margin location.</string>
                 </item>
                 <item row="1" column="2" rowspan="2">
                  <widget class="QGroupBox" name="groupBox_24">
+                  <property name="minimumSize">
+                   <size>
+                    <width>225</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>225</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="title">
                    <string>Font</string>
                   </property>
@@ -3388,8 +3454,20 @@ Border and Margin location.</string>
                 </item>
                 <item row="1" column="0">
                  <widget class="QTabWidget" name="tabWidget_18">
+                  <property name="minimumSize">
+                   <size>
+                    <width>250</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>250</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="currentIndex">
-                   <number>0</number>
+                   <number>2</number>
                   </property>
                   <widget class="QWidget" name="tabWidgetPage1_4">
                    <attribute name="title">
@@ -3666,6 +3744,18 @@ Border and Margin location.</string>
                 </item>
                 <item row="1" column="2" rowspan="2">
                  <widget class="QGroupBox" name="groupBox_35">
+                  <property name="minimumSize">
+                   <size>
+                    <width>225</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>225</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="title">
                    <string>Font</string>
                   </property>
@@ -4561,8 +4651,20 @@ need to be adjusted to set the title</string>
                 </item>
                 <item row="1" column="0">
                  <widget class="QTabWidget" name="tabWidget_19">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>260</width>
+                    <height>0</height>
+                   </size>
+                  </property>
                   <property name="currentIndex">
-                   <number>3</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="tabWidgetPage1_5">
                    <attribute name="title">
